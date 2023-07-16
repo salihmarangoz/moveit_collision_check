@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>moveit_collision_check</name>
+  <version>0.0.0</version>
+  <description>The moveit_collision_check package</description>
+
+  <maintainer email="todo@todo.cc">todo</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>std_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>moveit</depend>
+  <depend>moveit_msgs</depend>
+  <depend>moveit_core</depend>
+  <depend>moveit_ros_planning</depend>
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>moveit_visual_tools</depend>
+  <depend>tf2</depend>
+  <depend>tf2_eigen</depend>
+  <depend>visualization_msgs</depend>
+  <depend>message_runtime</depend>
+
+  <export>
+  </export>
+</package>

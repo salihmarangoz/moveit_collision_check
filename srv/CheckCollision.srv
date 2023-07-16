@@ -1,0 +1,4 @@
+sensor_msgs/JointState state
+---
+bool collision_state
+float64 collision_distance

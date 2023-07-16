@@ -1,0 +1,13 @@
+<launch>
+
+  <arg name="robot_name" default="lite6"/>
+
+  <param name="/robot_description_moveit_collision_check" textfile="$(find moveit_collision_check)/urdf/$(arg robot_name)_robot_description.urdf"/>
+  <param name="/robot_description_moveit_collision_check_semantic" textfile="$(find moveit_collision_check)/urdf/$(arg robot_name)_robot_description_semantic.urdf"/>
+
+  <node name="moveit_collision_check" pkg="moveit_collision_check" type="collision_check" output="screen">
+    <remap from="robot_description" to="/robot_description_moveit_collision_check"/>
+    <remap from="robot_description_semantic" to="/robot_description_moveit_collision_check_semantic"/>
+  </node>
+
+</launch>
