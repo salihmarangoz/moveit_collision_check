@@ -389,6 +389,8 @@
     <disable_collisions link1="arm_holder_link" link2="arm_left_controller_link" reason="Adjacent"/>
     <disable_collisions link1="arm_holder_link" link2="arm_right_controller_link" reason="Adjacent"/>
 
+    <disable_collisions link1="zed2i_link" link2="zed2i_holder_link" reason="Adjacent"/>
+
 
 
 </robot>
