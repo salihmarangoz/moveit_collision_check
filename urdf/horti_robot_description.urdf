@@ -1450,13 +1450,6 @@
     <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
   <link name="zed2i_link">
-    <visual>
-      <material name="gray"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://horti_description/meshes/camera/zed2i.stl"/>
-      </geometry>
-    </visual>
     <collision>
       <geometry>
         <mesh filename="package://horti_description/meshes/camera/zed2i.stl"/>
