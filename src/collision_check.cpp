@@ -15,6 +15,19 @@ moveit::core::RobotModelPtr robot_model_;
 bool check_collision(moveit_collision_check::CheckCollision::Request  &req, moveit_collision_check::CheckCollision::Response &res)
 {
   robot_state::RobotState robot_state(robot_model_);
+
+  if (req.state.name.size() != req.state.position.size())
+  {
+    ROS_ERROR("Number of joints and number of positions should be equal!");
+    return false;
+  }
+
+  if (robot_state.getVariableCount() != req.state.name.size())
+  {
+    ROS_ERROR("Number of joints and number of robot variables should be equal!");
+    return false;
+  }
+
   for (int i=0; i<req.state.name.size(); i++) robot_state.setVariablePosition(req.state.name[i], req.state.position[i]);
   robot_state.update();
 
