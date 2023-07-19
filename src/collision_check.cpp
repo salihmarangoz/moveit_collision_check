@@ -24,7 +24,7 @@ bool check_collision(moveit_collision_check::CheckCollision::Request  &req, move
   return true;
 }
 
-// Just for debugging!!!!
+// Just for debugging. Use the service for normal use.
 void jointStatesCallback(const sensor_msgs::JointStateConstPtr &msg)
 {
   robot_state::RobotState robot_state(robot_model_);
@@ -38,10 +38,15 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "collision_check");
   ros::NodeHandle nh;
   ros::NodeHandle nhp("~");
+  bool debug = nhp.param("debug", false);
   //ros::AsyncSpinner spinner(4);
   //spinner.start();
 
-  ros::Subscriber sub = nh.subscribe("/joint_states", 2, jointStatesCallback);
+  ros::Subscriber sub;
+  if (debug)
+  {
+    sub = nh.subscribe("/joint_states", 2, jointStatesCallback);
+  }
 
   robot_model_loader::RobotModelLoader robot_model_loader("robot_description", false);
   robot_model_ = robot_model_loader.getModel();
