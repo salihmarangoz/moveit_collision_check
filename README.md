@@ -56,3 +56,7 @@ Set `position` as below and **call** the service again:
 ```
 
 You should see there is a collision and service returned `collision_state` value as True.
+
+## Neural Network
+
+Robot models for NN needs more disabled collisions. Use `generate_acm.py` for this purpose. Run `train_collision_model.py` to train a model.
