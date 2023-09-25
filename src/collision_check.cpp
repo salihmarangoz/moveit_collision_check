@@ -31,9 +31,22 @@ bool check_collision(moveit_collision_check::CheckCollision::Request  &req, move
   for (int i=0; i<req.state.name.size(); i++) robot_state.setVariablePosition(req.state.name[i], req.state.position[i]);
   robot_state.update();
 
+  // Check collision
   visual_tools_->publishRobotState(robot_state);
   res.collision_state = visual_tools_->checkAndPublishCollision(robot_state, &(*planning_scene_) );
-  //res.collision_distance = TODO
+  
+  // Check collision distance
+  // Copied and modified contents of checkAndPublishCollision. leaving check collision as separated because that also includes visualization.
+  collision_detection::CollisionRequest c_req;
+  collision_detection::CollisionResult c_res;
+  c_req.contacts = true;
+  c_req.max_contacts = 10;
+  c_req.max_contacts_per_pair = 3;
+  c_req.verbose = true;
+  c_req.distance = true;
+  planning_scene_->checkCollision(c_req, c_res, robot_state); // Check for collisions
+  res.collision_distance = c_res.distance;
+
   return true;
 }
 
